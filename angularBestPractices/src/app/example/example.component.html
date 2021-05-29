@@ -1,0 +1,52 @@
+<!--
+Use trackBy instead of ngFor
+'ngFor' is a built-in template directive in Angular and it is Generally we used 'ngFor' creating 
+a template for each item in the application. You can use 'trackBy' instead of 'ngFor' 
+which help you by bringing unique and customized identifier each item instead of rendering the whole DOM tree.
+When using 'ngFor', you need re-render the entire DOM tree after every change occurs in the array while using 'trackBy', 
+you can specify the changes separately and it will help Angular 
+to make DOM changes for the defined array.
+-->
+
+<!-- 
+
+<ul>
+<li *ngFor="let item of collection;">{{item.id}}</li>
+</ul>
+
+-->
+
+<div class="content">
+
+<div class="center">
+  <button mat-raised-button color="primary" (click)="getItems()">
+    Refresh items
+  </button>
+</div>
+<ul class="list">
+  <li *ngFor="let item of collection; trackBy: trackByFn">{{ item.id }}</li>
+</ul>
+
+<hr />
+
+<!--
+CDK Virtual Scroll
+CDK Virtual Scroll is a very important tool at your disposal which you can utilize 
+the gain some good performance over your development. 
+For example, if you have a larger file more than a thousand to display at the same time, 
+it will make the application vulnerable and likely to slow down the performances. 
+CDK Virtual Scroll can be found inside the Angular Material Package 
+which helps developers enhances the performance of the applications 
+and visualize the larger file in the browser.
+-->
+
+<h1 class="center">Virtual Scroll using Angular</h1>
+
+<ul class="list">
+  <cdk-virtual-scroll-viewport style="height: 500px" itemSize="90">
+    <ng-container *cdkVirtualFor="let n of numbers">
+      <li>{{ n }}</li>
+    </ng-container>
+  </cdk-virtual-scroll-viewport>
+</ul>
+</div>
